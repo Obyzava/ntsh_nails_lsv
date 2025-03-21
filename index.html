@@ -5,10 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>NOW Студия маникюра | Лысьва</title>
     <style>
-        /* Основные стили */
         body {
-            font-family: 'Arial', sans-serif;
-            background: linear-gradient(135deg, #4CAF50, #8BC34A);
+            font-family: 'Roboto', sans-serif;
+            background: linear-gradient(135deg, #81C784, #388E3C);
             color: white;
             margin: 0;
             padding: 0;
@@ -17,45 +16,35 @@
             align-items: center;
             flex-direction: column;
             min-height: 100vh;
-            overflow-x: hidden;
         }
 
         h1 {
-            font-size: 3em;
+            font-size: 3.5em;
             margin-bottom: 20px;
-            animation: fadeInDown 1.5s ease-in-out;
+            animation: fadeInDown 1.2s ease;
         }
 
         .tabs {
             display: flex;
             justify-content: center;
             margin-bottom: 20px;
-            animation: fadeIn 2s ease-in-out;
         }
 
         .tab-button {
-            background-color: #2E7D32;
-            color: white;
-            padding: 10px 20px;
-            border: none;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            margin: 0 5px;
-            border-radius: 5px;
-            font-size: 1.1em;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-        }
-
-        .tab-button:hover {
             background-color: #388E3C;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            color: white;
+            padding: 12px 24px;
+            margin: 0 5px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 1.2em;
+            transition: background-color 0.3s ease, transform 0.2s;
         }
 
-        .tab-button.active {
-            background-color: #1B5E20;
-            transform: translateY(0);
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        .tab-button:hover, .tab-button.active {
+            background-color: #2E7D32;
+            transform: translateY(-3px);
         }
 
         .tab-content {
@@ -63,10 +52,10 @@
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.1);
             border-radius: 10px;
-            width: 80%;
+            width: 90%;
             max-width: 800px;
             text-align: center;
-            animation: fadeInUp 1s ease-in-out;
+            animation: fadeInUp 0.8s ease;
         }
 
         .tab-content.active {
@@ -74,78 +63,45 @@
         }
 
         .button {
-            background-color: #2E7D32;
+            background-color: #388E3C;
             color: white;
-            padding: 10px 20px;
-            text-align: center;
+            padding: 12px 24px;
+            margin: 20px 0;
+            border-radius: 8px;
             text-decoration: none;
             display: inline-block;
-            font-size: 1em;
-            margin: 20px 0;
-            cursor: pointer;
-            border: none;
-            border-radius: 5px;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: background-color 0.3s ease;
         }
 
         .button:hover {
-            background-color: #388E3C;
-            transform: translateY(-3px);
-            box-shadow: 0 6px 8px rgba(0, 0, 0, 0.2);
+            background-color: #2E7D32;
         }
 
-        /* Галерея */
         .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 10px;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 12px;
             margin-top: 20px;
         }
 
         .gallery img {
-            max-width: 100%;
-            height: auto;
+            width: 100%;
             border-radius: 10px;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            transition: transform 0.3s ease;
         }
 
         .gallery img:hover {
             transform: scale(1.05);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
-        }
-
-        /* Анимации */
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-            }
-            to {
-                opacity: 1;
-            }
         }
 
         @keyframes fadeInDown {
-            from {
-                opacity: 0;
-                transform: translateY(-20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
     </style>
 </head>
@@ -156,6 +112,7 @@
         <button class="tab-button" onclick="openTab(event, 'services')">Услуги</button>
         <button class="tab-button" onclick="openTab(event, 'gallery')">Галерея</button>
         <button class="tab-button" onclick="openTab(event, 'contact')">Контакты</button>
+        <button class="tab-button" onclick="openTab(event, 'reviews')">Отзывы</button>
     </div>
 
     <div id="home" class="tab-content active">
@@ -169,46 +126,44 @@
         <p>Маникюр + покрытие гель лаком: 1000 руб.</p>
         <p>Холодная парафинотерапия: 300 руб.</p>
         <p>Горячая парафинотерапия: 350 руб.</p>
-        <p>Больше услуг - <p>
-        <p>https://beautyagent.ru/natalya8916/services</p>
+        <p><a href="https://beautyagent.ru/natalya8916/services">Подробнее об услугах</a></p>
     </div>
 
     <div id="gallery" class="tab-content">
         <h2>Наши работы</h2>
         <div class="gallery">
-            <img src="фото 1.jpg" alt="Покрытие с дизайном">
-            <img src="фото 2.jpg" alt="Спа-процедуры">
-            <img src="фото 3.jpg" alt="Наращивание ногтей">
-            <img src="прайс v1.jpg" alt="Прайс-лист">
-            <img src="прайс v2.jpg" alt="Прайс-лист">
-            <img src="фон 1.jpg" alt="Фон">
-            <img src="фон 2.jpg" alt="Фон">
+            <img src="фото1.jpg" alt="Покрытие с дизайном">
+            <img src="фото2.jpg" alt="Спа-процедуры">
+            <img src="фото3.jpg" alt="Наращивание ногтей">
         </div>
+    </div>
+
+    <div id="reviews" class="tab-content">
+        <h2>Отзывы клиентов</h2>
+        <p>Анна: Отличное качество и профессиональный подход!</p>
+        <p>Мария: Очень довольна результатом, вернусь ещё!</p>
     </div>
 
     <div id="contact" class="tab-content">
         <h2>Контакты</h2>
         <p>Телефон: <a href="tel:+79960841380">+7 (996) 084-13-80</a></p>
-        <p>ВК: https://vk.com/ntsh_nails_lsv 
+        <p>ВК: <a href="https://vk.com/ntsh_nails_lsv">ntsh_nails_lsv</a></p>
         <p>Адрес: Смышляева 18, ТЦ "РИМ", 3 этаж</p>
     </div>
 
     <script>
         function openTab(evt, tabName) {
             var i, tabContent, tabButtons;
-
             tabContent = document.getElementsByClassName("tab-content");
             for (i = 0; i < tabContent.length; i++) {
                 tabContent[i].style.display = "none";
             }
-
             tabButtons = document.getElementsByClassName("tab-button");
             for (i = 0; i < tabButtons.length; i++) {
-                tabButtons[i].className = tabButtons[i].className.replace(" active", "");
+                tabButtons[i].classList.remove("active");
             }
-
             document.getElementById(tabName).style.display = "block";
-            evt.currentTarget.className += " active";
+            evt.currentTarget.classList.add("active");
         }
     </script>
 </body>
